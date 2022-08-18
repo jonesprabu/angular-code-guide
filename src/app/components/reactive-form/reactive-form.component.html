@@ -1,7 +1,52 @@
-<form [formGroup]="dataForm">
-  <label for="first-name">First Name: </label>
-  <input id="first-name" type="text" formControlName="firstName" />
-
-  <label for="last-name">Last Name: </label>
-  <input id="last-name" type="text" formControlName="lastName" />
-</form>
+<div class="container">
+  <form class="myForm" [formGroup]="dataForm">
+    <p>
+      <label for="company-name"
+        >Company Name
+        <input id="company-name" type="text" formControlName="companyName"
+      /></label>
+    </p>
+    <p>
+      <label for="mode">
+        Mode
+        <input id="mode" type="text" formControlName="mode" />
+      </label>
+    </p>
+    <p>
+      <label for="email">
+        Email
+        <input id="email" type="text" formControlName="email" />
+      </label>
+    </p>
+    <p>
+      <label for="price">
+        Price
+        <input id="price" type="text" formControlName="price" />
+      </label>
+    </p>
+    <div class="button-container">
+      <p>
+        <button (click)="submitForm()">Submit</button>
+        <button>Reset</button>
+      </p>
+    </div>
+  </form>
+  <div class="result">
+    <table>
+      <thead>
+        <th>Company Name</th>
+        <th>Mode</th>
+        <th>Email</th>
+        <th>Price</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of formData">
+          <td>{{ data.companyName }}</td>
+          <td>{{ data.mode }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
