@@ -33,5 +33,6 @@ export class ReactiveFormComponent implements OnInit {
       email: this.dataForm.value.email,
       price: +this.dataForm.value.price,
     });
+    this.dataForm.reset();
   }
 }
