@@ -86,13 +86,20 @@
     border: 0px;
     color: red;
     transition: all 0.5s ease-in-out;
-    display: none;
-
+    // display: none;
+    overflow: hidden; /* Hide the element content, while height = 0 */
+    height: 0;
+    opacity: 0;
+    padding: 0; // transition: height 0ms 400ms, opacity 400ms 0ms;
     // &.valid {
     //   display: none;
     // }
     &.in-valid {
-      display: block;
+      // display: block;
+      height: 2em;
+      opacity: 1;
+      transition: all 0.5s ease-out;
+      // transition: height 0ms 0ms, opacity 600ms 0ms;
     }
   }
 
