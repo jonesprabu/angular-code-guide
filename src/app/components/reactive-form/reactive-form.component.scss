@@ -24,7 +24,7 @@
     td {
       border: 1px solid #ccc;
       border-collapse: collapse;
-      padding: .5em;
+      padding: 0.5em;
     }
   }
 
@@ -71,6 +71,7 @@
   .myForm input[type='number'],
   .myForm input[type='datetime-local'],
   .myForm select,
+  .myForm .err-msg,
   .myForm textarea {
     float: right;
     // margin-right: 40%;
@@ -79,6 +80,20 @@
     font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
     font-size: 0.9em;
     padding: 0.3em;
+  }
+
+  .myForm .err-msg {
+    border: 0px;
+    color: red;
+    transition: all 0.5s ease-in-out;
+    display: none;
+
+    // &.valid {
+    //   display: none;
+    // }
+    &.in-valid {
+      display: block;
+    }
   }
 
   .myForm textarea {

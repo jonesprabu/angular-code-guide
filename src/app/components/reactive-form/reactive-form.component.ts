@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompanyFormData } from '../../models/interfaces';
 
 @Component({
@@ -9,14 +9,17 @@ import { CompanyFormData } from '../../models/interfaces';
 })
 export class ReactiveFormComponent implements OnInit {
   public formData: CompanyFormData[] = [
-    { companyName: 'test', mode: 't1', email: 'e@e.com', price: 0 },
+    // { companyName: 'test', mode: 't1', email: 'e@e.com', price: 0 },
   ];
 
   dataForm = new FormGroup({
-    companyName: new FormControl(''),
-    mode: new FormControl(''),
-    email: new FormControl(''),
-    price: new FormControl(''),
+    companyName: new FormControl('', [Validators.required]),
+    mode: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    price: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]*$'),
+    ]),
   });
 
   constructor() {}

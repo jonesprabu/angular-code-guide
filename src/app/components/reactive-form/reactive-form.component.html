@@ -3,31 +3,87 @@
     <p>
       <label for="company-name"
         >Company Name
-        <input id="company-name" type="text" formControlName="companyName"
-      /></label>
+        <input id="company-name" type="text" formControlName="companyName" />
+      </label>
+      <span
+        class="err-msg"
+        [ngClass]="{
+          'in-valid':
+            dataForm.get('companyName').hasError('required') &&
+            dataForm.get('companyName').touched
+        }"
+        >This field is required</span
+      >
     </p>
     <p>
       <label for="mode">
         Mode
         <input id="mode" type="text" formControlName="mode" />
       </label>
+      <span
+        class="err-msg"
+        [ngClass]="{
+          'in-valid':
+            dataForm.get('mode').hasError('required') &&
+            dataForm.get('mode').touched
+        }"
+        >This field is required</span
+      >
     </p>
     <p>
       <label for="email">
         Email
         <input id="email" type="text" formControlName="email" />
       </label>
+      <span
+        class="err-msg"
+        [ngClass]="{
+          'in-valid':
+            dataForm.get('email').hasError('required') &&
+            dataForm.get('email').touched
+        }"
+        >This field is required</span
+      >
+      <span
+        class="err-msg"
+        [ngClass]="{
+          'in-valid':
+            dataForm.get('email').hasError('email') &&
+            dataForm.get('email').touched
+        }"
+        >Not a valid Email</span
+      >
     </p>
     <p>
       <label for="price">
         Price
         <input id="price" type="text" formControlName="price" />
       </label>
+      <span
+        class="err-msg"
+        [ngClass]="{
+          'in-valid':
+            dataForm.get('price').hasError('required') &&
+            dataForm.get('price').touched
+        }"
+        >This field is required</span
+      >
+      <span
+        class="err-msg"
+        [ngClass]="{
+          'in-valid':
+            dataForm.get('price').hasError('pattern') &&
+            dataForm.get('price').touched
+        }"
+        >Not a valid Number</span
+      >
     </p>
     <div class="button-container">
       <p>
-        <button (click)="submitForm()">Submit</button>
-        <button>Reset</button>
+        <button (click)="submitForm()" [disabled]="!dataForm.valid">
+          Submit
+        </button>
+        <button (click)="dataForm.reset()">Reset</button>
       </p>
     </div>
   </form>
